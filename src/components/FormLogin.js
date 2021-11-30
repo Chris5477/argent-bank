@@ -1,33 +1,61 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useRef } from "react/cjs/react.development";
+import { useState, useRef } from "react";
 
-const FormLogin = () => {
+const aaa = (e, d, n, p) => {
+  let isValid = true;
+  const v = d.filter((el) => el.password === p && el.firstName === n);
+  isValid = v.length ? true : false;
+  if (!isValid) {
+    e.preventDefault();
+  } else {
+    window.history.pushState({ v }, null, window.location.origin + "/user");
+  }
+};
 
-    let [name, setName] = useState("")
-    let [password, setPassword] = useState("")
-    const refInputName = useRef(null)
-    const refInputPassword = useRef(null)
+const FormLogin = ({ dataUser }) => {
+  let [name, setName] = useState("");
+  let [password, setPassword] = useState("");
+  let refInputName = useRef(null);
+  let refInputPassword = useRef(null);
 
-    const LinkEnabled = refInputName.current?.value && refInputPassword.current.value &&  <Link className="sign-in-button" to="/user" >Sign In</Link> 
-    
+  const displayButton =
+    name && password ? (
+      <button className="sign-in-button" onClick={(e) => aaa(e, dataUser, name, password)}>
+        Se connecter
+      </button>
+    ) : (
+      <button className="sign-in-button" disabled>
+        Se connecter
+      </button>
+    );
+
   return (
     <form>
       <div className="input-wrapper">
         <label htmlFor="username">Username</label>
-        <input ref={refInputName} onChange={(e) => setName(name = e.target.value)} type="text" id="username" value={name} />
+        <input
+          ref={refInputName}
+          onChange={(e) => setName((name = e.target.value))}
+          type="text"
+          id="username"
+          value={name}
+        />
       </div>
       <div className="input-wrapper">
         <label htmlFor="password">Password</label>
-        <input ref={refInputPassword}  onChange={(e) => setPassword(password = e.target.value)} type="password" id="password" value={password} />
+        <input
+          ref={refInputPassword}
+          onChange={(e) => setPassword((password = e.target.value))}
+          type="password"
+          id="password"
+          value={password}
+        />
       </div>
       <div className="input-remember">
         <label htmlFor="remember-me">Remember me</label>
         <input type="checkbox" id="remember-me" />
       </div>
 
-    {LinkEnabled}
-     
+      {displayButton}
     </form>
   );
 };
