@@ -13,36 +13,42 @@ const loading = () => {
 const getDataUserSucces = (success) => {
   return {
     type: GET_DATA_USER,
-    payload : success
+    payload: success,
   };
 };
 
 const errorGetDataUser = (error) => {
   return {
     type: ERROR_GET_DATA_USER,
-    payload : error
+    payload: error,
   };
 };
 
 export const apiCall = (objUser) => {
-    return dispatch => {
-        dispatch(loading())
+  return (dispatch) => {
+    dispatch(loading());
 
-        axios.post("http://localhost:3001/api/v1/user/login", {
-            ...objUser
-        })
-        .then(request => {
-            if(request.status === 200){
-              console.log(request)
-                request.headers.authorization = request.data.body.token
-                axios.post("http://localhost:3001/api/v1/user/profile", {...request})
-                .then((res) => {
-                  dispatch(getDataUserSucces(res.data))})
-                .catch(err => {
-                    console.log("erreur sur la requete")
-                    dispatch(errorGetDataUser(err.message))
-                })
-            }
-        })
-    }
-}
+    axios
+      .post("http://localhost:3001/api/v1/user/login", {
+        ...objUser,
+      })
+      .then((request) => {
+        if (request.status === 200) {
+          
+          const token = request.data.body.token;
+      
+          axios
+            .post(`http://localhost:3001/api/v1/user/profile`,{
+              ...request.headers.authorization = "Bearer" + token
+            })
+            .then((res) => {
+              dispatch(getDataUserSucces(res.data));
+            })
+            .catch((err) => {
+              console.log("erreur sur la requete");
+              dispatch(errorGetDataUser(err.message));
+            });
+        }
+      });
+  };
+};

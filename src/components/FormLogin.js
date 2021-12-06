@@ -30,11 +30,9 @@ const FormLogin = () => {
       <input type="submit" className="sign-in-button" value="Se connecter" disabled />
     );
 
-    const sendData = (e) => {
-      console.log(objectUser)
+    const sendData =  (e) => {
       e.preventDefault()
       myDispatch(apiCall(objectUser))
-      
     }
 
 
