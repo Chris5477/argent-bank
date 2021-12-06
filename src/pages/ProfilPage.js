@@ -1,7 +1,7 @@
 import Account from "../components/Account";
 
-const ProfilPage = (props) => {
-console.log(props)
+const ProfilPage = () => {
+
     const accounts = {
         account1 : {
             title:"Argent Bank Checking (x8349)",

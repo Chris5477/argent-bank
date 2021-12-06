@@ -1,43 +1,54 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { apiCall } from "../redux/actionUser";
 
-const aaa = (e, d, n, p) => {
-  let isValid = true;
-  const v = d.filter((el) => el.password === p && el.firstName === n);
-  isValid = v.length ? true : false;
-  if (!isValid) {
-    e.preventDefault();
-  } else {
-    window.history.pushState({ v }, null, window.location.origin + "/user");
-  }
-};
-
-const FormLogin = ({ dataUser }) => {
-  let [name, setName] = useState("");
+const FormLogin = () => {
+  let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
-  let refInputName = useRef(null);
+  let refInputEmail = useRef(null);
   let refInputPassword = useRef(null);
 
+  const dataUser = useSelector((state) => state);
+
+  const myDispatch = useDispatch();
+
+  useEffect(() => {
+    apiCall();
+  }, []);
+
+  const objectUser = {
+    email,
+    password,
+  };
+
+
+
   const displayButton =
-    name && password ? (
-      <button className="sign-in-button" onClick={(e) => aaa(e, dataUser, name, password)}>
-        Se connecter
-      </button>
+    email && password ? (
+      <input type="submit" className="sign-in-button" value="Se connecter" />
     ) : (
-      <button className="sign-in-button" disabled>
-        Se connecter
-      </button>
+      <input type="submit" className="sign-in-button" value="Se connecter" disabled />
     );
 
+    const sendData = (e) => {
+      console.log(objectUser)
+      e.preventDefault()
+      myDispatch(apiCall(objectUser))
+      
+    }
+
+
+
   return (
-    <form>
+    <form onSubmit={(e) => sendData(e)}>
       <div className="input-wrapper">
         <label htmlFor="username">Username</label>
         <input
-          ref={refInputName}
-          onChange={(e) => setName((name = e.target.value))}
+          ref={refInputEmail}
+          onChange={(e) => setEmail((email = e.target.value))}
           type="text"
           id="username"
-          value={name}
+          value={email}
         />
       </div>
       <div className="input-wrapper">

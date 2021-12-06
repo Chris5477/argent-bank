@@ -1,7 +1,10 @@
 import Heading from "../components/Heading";
 import ContainerFeatures from "../components/ContainerFeatures";
 
+
 const HomePage = () => {
+
+
   return (
     <div className="home-page">
       <Heading />

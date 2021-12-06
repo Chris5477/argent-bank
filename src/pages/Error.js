@@ -1,6 +1,6 @@
 const Error = () => {
 return(
-    <h1>Nous sommes désolés mais la page que vous demandez n'existe pas !!!</h1>
+    <p>La page que vous demandez n'hexiste pas</p>
 )
 }
 export default Error;
