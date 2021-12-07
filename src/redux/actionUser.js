@@ -41,7 +41,6 @@ export const apiCall = (objUser) => {
       })
       .then((request) => {
         if (request.status === 200) {
-          console.log(request);
           const token = request.data.body.token;
 
           axios
@@ -49,11 +48,11 @@ export const apiCall = (objUser) => {
               `http://localhost:3001/api/v1/user/profile`,
               (axios.defaults.headers.common["Authorization"] = `Bearer ${token}`)
             )
-            .then(bbb => dispatch(getDataUserSucces(bbb.data.body)))
-            .catch((err) => dispatch(errorGetDataUser(err.message)))
+            .then((user) => dispatch(getDataUserSucces(user.data.body)))
+            .catch((err) => dispatch(errorGetDataUser(err.message)));
         }
 
-        return new Error("Impossible de récupérer les information de votre compte")
+        return new Error("Impossible de récupérer les information de votre compte");
       });
   };
 };

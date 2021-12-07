@@ -15,6 +15,7 @@ body {
 
 .main {
   flex: 1;
+  position: relative;
 }
 
 .bg-dark {
@@ -35,6 +36,28 @@ body {
   white-space: nowrap !important; /* 3 */
 }
 
+.modal{
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.753);
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform : translate(-50%,-50%);
+  color: red;
+  z-index: 1000;
+}
+
+.no-display{
+  display: none;
+}
+
+.content-modal{
+  width: 80%;
+  height: 80vh;
+  
+
+}
 .main-nav {
   display: flex;
   justify-content: space-between;

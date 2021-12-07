@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { logout } from "../redux/actionUser";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 
@@ -7,12 +8,15 @@ const OnlineNav = () => {
   const history = useHistory();
 
   const disconnectMe = () => {
+    myDispatch(logout());
     history.push("/");
   };
   return (
     <div className="aaa">
       <Link to="/user">Mon compte</Link>
-      <button onClick={() => myDispatch(disconnectMe())}>Log out</button>
+      <button className="sign-in-button" onClick={() => disconnectMe()}>
+        Deconnexion
+      </button>
     </div>
   );
 };

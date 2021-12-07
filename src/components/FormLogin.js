@@ -25,7 +25,7 @@ const FormLogin = () => {
     e.preventDefault();
     myDispatch(apiCall(objectUser));
     if (dataUser.online) {
-      history.push("/user", dataUser);
+      history.push("/user");
     }
   };
 
