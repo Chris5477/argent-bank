@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { apiCall } from "../redux/actionUser";
 
 const FormLogin = () => {
@@ -9,7 +10,7 @@ const FormLogin = () => {
   let refInputPassword = useRef(null);
 
   const dataUser = useSelector((state) => state);
-
+  const history = useHistory();
   const myDispatch = useDispatch();
 
   useEffect(() => {
@@ -21,8 +22,6 @@ const FormLogin = () => {
     password,
   };
 
-
-
   const displayButton =
     email && password ? (
       <input type="submit" className="sign-in-button" value="Se connecter" />
@@ -30,12 +29,14 @@ const FormLogin = () => {
       <input type="submit" className="sign-in-button" value="Se connecter" disabled />
     );
 
-    const sendData =  (e) => {
-      e.preventDefault()
-      myDispatch(apiCall(objectUser))
+  const sendData = (e) => {
+    console.log(dataUser);
+    e.preventDefault();
+    myDispatch(apiCall(objectUser));
+    if (dataUser.online) {
+      history.push("/user", dataUser);
     }
-
-
+  };
 
   return (
     <form onSubmit={(e) => sendData(e)}>

@@ -1,7 +1,10 @@
 import Account from "../components/Account";
+import { useSelector } from "react-redux";
 
 const ProfilPage = () => {
 
+    const myData = useSelector(state => state)
+    console.log(myData)
     const accounts = {
         account1 : {
             title:"Argent Bank Checking (x8349)",
@@ -26,7 +29,7 @@ const ProfilPage = () => {
 return(
     <main className="main bg-dark">
       <div className="header">
-        <h1>Welcome back<br />Tony Jarvis!</h1>
+        <h1>Welcome back<br />{myData.dataUser.firstName}</h1>
         <button className="edit-button">Edit Name</button>
       </div>
       <h2 className="sr-only">Accounts</h2>

@@ -3,6 +3,7 @@ import axios from "axios";
 export const LOADING = "LOADING";
 export const GET_DATA_USER = "GET_DATA";
 export const ERROR_GET_DATA_USER = "ERROR_GET_DATA_USER";
+export const DISCONNECT = "DISCONNECT";
 
 const loading = () => {
   return {
@@ -24,6 +25,12 @@ const errorGetDataUser = (error) => {
   };
 };
 
+const disconnect = () => {
+  return {
+    type: DISCONNECT,
+  };
+};
+
 export const apiCall = (objUser) => {
   return (dispatch) => {
     dispatch(loading());
@@ -34,21 +41,25 @@ export const apiCall = (objUser) => {
       })
       .then((request) => {
         if (request.status === 200) {
-          
+          console.log(request);
           const token = request.data.body.token;
-      
+
           axios
-            .post(`http://localhost:3001/api/v1/user/profile`,{
-              ...request.headers.authorization = "Bearer" + token
-            })
-            .then((res) => {
-              dispatch(getDataUserSucces(res.data));
-            })
-            .catch((err) => {
-              console.log("erreur sur la requete");
-              dispatch(errorGetDataUser(err.message));
-            });
+            .post(
+              `http://localhost:3001/api/v1/user/profile`,
+              (axios.defaults.headers.common["Authorization"] = `Bearer ${token}`)
+            )
+            .then(bbb => dispatch(getDataUserSucces(bbb.data.body)))
+            .catch((err) => dispatch(errorGetDataUser(err.message)))
         }
+
+        // return new Error("Impossible de récupérer les information de votre compte")
       });
+  };
+};
+
+export const logout = () => {
+  return (dispatch) => {
+    dispatch(disconnect());
   };
 };
