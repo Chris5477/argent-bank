@@ -53,7 +53,7 @@ export const apiCall = (objUser) => {
             .catch((err) => dispatch(errorGetDataUser(err.message)))
         }
 
-        // return new Error("Impossible de récupérer les information de votre compte")
+        return new Error("Impossible de récupérer les information de votre compte")
       });
   };
 };
