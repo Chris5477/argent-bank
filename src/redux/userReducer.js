@@ -4,7 +4,6 @@ const userState = {
     isLoad : false,
     dataUser : [],
     error : "",
-    online : false
 }
 
 export const userReducer = (state = userState, action) => {
@@ -20,24 +19,21 @@ export const userReducer = (state = userState, action) => {
                 ...state,
                 isLoad : false,
                 dataUser : action.payload,
-                error : "",
-                online : true
+                error : ""
             }
         case ERROR_GET_DATA_USER :
             return {
                 ...state,
                 isLoad : false,
                 dataUser : [],
-                error : action.payload,
-                online : false
+                error : action.payload
             }
         case DISCONNECT :
             return {
                 ...state,
                 isLoad : false,
                 dataUser : [],
-                error : "",
-                online : false
+                error : ""
             }
         default : return state
     }

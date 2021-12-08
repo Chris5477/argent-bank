@@ -10,6 +10,7 @@ const OnlineNav = () => {
   const disconnectMe = () => {
     myDispatch(logout());
     history.push("/");
+    sessionStorage.clear()
   };
   return (
     <div className="aaa">

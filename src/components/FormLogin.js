@@ -24,7 +24,7 @@ const FormLogin = () => {
   const sendData = (e) => {
     e.preventDefault();
     myDispatch(apiCall(objectUser));
-    if (dataUser.online) {
+    if (dataUser) {
       history.push("/user");
     }
   };

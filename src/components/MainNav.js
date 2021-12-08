@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
 import argentBankLogo from "../img/argentBankLogo.png";
-import { useSelector } from "react-redux";
 import OnlineNav from "./OnlineNav";
 
 const MainNav = () => {
-  const myData = useSelector((state) => state.user);
-
-  const isOnline = myData.online ? (
+  const isOnline = JSON.parse(sessionStorage.getItem("token")) ? (
     <OnlineNav />
   ) : (
     <Link className="main-nav-item" to="/signup">

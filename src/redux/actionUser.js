@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export const LOADING = "LOADING";
 export const GET_DATA_USER = "GET_DATA";
 export const ERROR_GET_DATA_USER = "ERROR_GET_DATA_USER";
@@ -42,7 +41,7 @@ export const apiCall = (objUser) => {
       .then((request) => {
         if (request.status === 200) {
           const token = request.data.body.token;
-
+          sessionStorage.setItem("token", JSON.stringify({tokenUser : token}))
           axios
             .post(
               `http://localhost:3001/api/v1/user/profile`,
