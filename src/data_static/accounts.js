@@ -1,4 +1,4 @@
-export const mock_accounts = {
+export const accounts_static = {
     account1 : {
         title:"Argent Bank Checking (x8349)",
         amount:"$2,082.79",

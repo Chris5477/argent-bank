@@ -1,4 +1,4 @@
-export  const mock_features = {
+export  const features_static = {
     feature1 : {
         title : "You are our #1 priority",
         description : "Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes."

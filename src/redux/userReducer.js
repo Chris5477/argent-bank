@@ -28,6 +28,8 @@ export const userReducer = (state = userState, action) => {
                 dataUser : [],
                 error : action.payload
             }
+
+        
         case DISCONNECT :
             return {
                 ...state,

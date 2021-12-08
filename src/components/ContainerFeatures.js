@@ -2,10 +2,10 @@ import Features from "./Features";
 import chat from "../img/icon-chat.png";
 import money from "../img/icon-money.png";
 import security from "../img/icon-security.png";
-import { mock_features } from "../mock_data/features";
+import { features_static } from "../data_static/features";
 
 const ContainerFeatures = () => {
-  const { feature1, feature2, feature3 } = mock_features;
+  const { feature1, feature2, feature3 } = features_static;
 
   return (
     <section className="features">
