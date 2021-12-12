@@ -1,16 +1,14 @@
 import Account from "../components/Account";
 import { accounts_static } from "../data_static/accounts";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 import Modal from "../components/Modal";
 
 const { account1, account2, account3 } = accounts_static;
 
 const Profile = () => {
 	const userData = useSelector((state) => state.user);
-
-	useEffect(() => {}, [userData]);
 	const fullNameUser = `${userData.dataUser.firstName} ${userData.dataUser.lastName}`;
+
 	const openModal = () => {
 		document.querySelector(".modal").classList.remove("noDisplay");
 	};
@@ -23,7 +21,7 @@ const Profile = () => {
 					<br />
 					{fullNameUser}
 				</h1>
-				<button onClick={() => openModal} className="edit-button">
+				<button onClick={() => openModal()} className="edit-button">
 					Edit Name
 				</button>
 			</div>
