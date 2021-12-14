@@ -8,7 +8,7 @@ const OnlineNav = ({ closeModal }) => {
 				<span className="fa fa-user-circle"></span>
 				My account
 			</Link>
-			<Button method={() => closeModal()} nameClass={"edit-name"} text={"Disconnection"} />
+			<Button method={() => closeModal()} nameClass={"disconnect-button"} text={"log out"} />
 		</>
 	);
 };

@@ -11,7 +11,7 @@ const { account1, account2, account3 } = accounts_static;
 
 const Profile = () => {
 	const userData = useSelector((state) => state.user);
-	const fullNameUser = `${userData.dataUser.firstName} ${userData.dataUser.lastName}`;
+	let fullNameUser = `${userData.dataUser.firstName} ${userData.dataUser.lastName}`;
 
 	const openModal = () => {
 		document.querySelector(".modal").classList.remove("noDisplay");
