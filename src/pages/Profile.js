@@ -25,28 +25,27 @@ const Profile = () => {
 		contentProfilePage = <Error />;
 	} else {
 		contentProfilePage = (
+			<div className="header">
+				<h1>
+					Welcome back
+					<br />
+					{fullNameUser}
+				</h1>
+				<Button method={() => openModal()} nameClass={"edit-button"} text={"Edit Name"} />
+			</div>
+		);
+	}
+	return (
+		<>
 			<main className="main bg-dark">
-				<div className="header">
-					<h1>
-						Welcome back
-						<br />
-						{fullNameUser}
-					</h1>
-					<Button method={() => openModal()} nameClass={"edit-button"} text={"Edit Name"} />
-				</div>
+				<Header />
+				{contentProfilePage}
 				<h2 className="sr-only">Accounts</h2>
 				<Account props={account1} />
 				<Account props={account2} />
 				<Account props={account3} />
 				<Modal />
 			</main>
-		);
-	}
-
-	return (
-		<>
-			<Header />
-			{contentProfilePage}
 		</>
 	);
 };

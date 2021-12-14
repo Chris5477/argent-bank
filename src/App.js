@@ -5,21 +5,24 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import Error from "./pages/Error";
 import { Provider } from "react-redux";
-import { store } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./redux/store";
 
 const App = () => {
 	return (
 		<div className="App">
 			<Provider store={store}>
-				<BrowserRouter>
-					<Switch>
-						<Route path="/" exact component={HomePage} />
-						<Route path="/signup" component={Signup} />
-						<Route path="/profil" component={Profile} />
-						<Route component={Error} />
-					</Switch>
-					<Footer />
-				</BrowserRouter>
+				<PersistGate persistor={persistor}>
+					<BrowserRouter>
+						<Switch>
+							<Route path="/" exact component={HomePage} />
+							<Route path="/signup" component={Signup} />
+							<Route path="/profil" component={Profile} />
+							<Route component={Error} />
+						</Switch>
+						<Footer />
+					</BrowserRouter>
+				</PersistGate>
 			</Provider>
 		</div>
 	);
