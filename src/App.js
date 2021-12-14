@@ -1,5 +1,4 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import Signup from "./pages/Signup";
@@ -13,7 +12,6 @@ const App = () => {
 		<div className="App">
 			<Provider store={store}>
 				<BrowserRouter>
-					<Header />
 					<Switch>
 						<Route path="/" exact component={HomePage} />
 						<Route path="/signup" component={Signup} />

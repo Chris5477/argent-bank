@@ -2,15 +2,19 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { useState } from "react";
 import { updateDatabse } from "../requests/updateProfil";
+import Input from "./Input";
+import Button from "./Button";
 
 const Modal = () => {
-	const [firstname, setFirstname] = useState();
-	const [lastname, setLastname] = useState();
+	const [firstname, setFirstname] = useState("");
+	const [lastname, setLastname] = useState("");
+	const [succes, setsucces] = useState("");
 
 	const updateProfil = (e) => {
 		e.preventDefault();
 		const token = JSON.parse(sessionStorage.getItem("token"));
 		updateDatabse(token.tokenUser, firstname, lastname);
+		setsucces("Votre modification à été pris en compte");
 	};
 
 	const closeModal = () => document.querySelector(".modal").classList.add("noDisplay");
@@ -18,27 +22,28 @@ const Modal = () => {
 	return ReactDOM.createPortal(
 		<div className="modal noDisplay">
 			<div className="content-modal">
-				<form className="updateDataUser" onSubmit={(e) => updateProfil(e)}>
-					<div className="formData">
-						<label htmlFor="firstName">Votre nouveau nom :</label>
-						<input
-							onChange={(e) => setFirstname(e.target.value)}
-							type="text"
-							id="firstName"
-							value={firstname}
-						/>
-					</div>
-					<label htmlFor="lastName">Votre nouveau Prénom :</label>
-					<input
-						onChange={(e) => setLastname(e.target.value)}
-						type="text"
-						id="lastName"
-						value={lastname}
+				<form className="form-modal" onSubmit={(e) => updateProfil(e)}>
+					<span className="fas fa-arrow-left"></span>
+					<h1>Changer vos informations </h1>
+					<Input
+						getValue={(val) => setFirstname(val)}
+						classWrapper={"input-wrapper"}
+						id={"firstName"}
+						type={"text"}
+						label={"Votre nouveau nom"}
 					/>
 
-					<button className="sign-in-button">Envoyer</button>
+					<Input
+						getValue={(val) => setLastname(val)}
+						classWrapper={"input-wrapper"}
+						id={"lastName"}
+						type={"text"}
+						label={"Votre nouveau prénom"}
+					/>
+					<p>{succes}</p>
+					<Button nameClass={"sign-in-button"} text={"Envoyer"} />
 				</form>
-				<button onClick={() => closeModal()}>X</button>
+				<Button nameClass={"close-modal"} text={"X"} method={() => closeModal()} />
 			</div>
 		</div>,
 		document.getElementById("modal")
