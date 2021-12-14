@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import Modal from "../components/Modal";
 import Header from "../components/Header";
 import Button from "../components/Button";
+import Error from "./Error";
+import Loader from "../components/Loader";
 
 const { account1, account2, account3 } = accounts_static;
 
@@ -15,9 +17,14 @@ const Profile = () => {
 		document.querySelector(".modal").classList.remove("noDisplay");
 	};
 
-	return (
-		<>
-			<Header />
+	let contentProfilePage = null;
+
+	if (userData.isLoad) {
+		contentProfilePage = <Loader />;
+	} else if (userData.error) {
+		contentProfilePage = <Error />;
+	} else {
+		contentProfilePage = (
 			<main className="main bg-dark">
 				<div className="header">
 					<h1>
@@ -33,6 +40,13 @@ const Profile = () => {
 				<Account props={account3} />
 				<Modal />
 			</main>
+		);
+	}
+
+	return (
+		<>
+			<Header />
+			{contentProfilePage}
 		</>
 	);
 };
