@@ -15,7 +15,12 @@ const Modal = () => {
 
 	const updateProfil = (e) => {
 		e.preventDefault();
-		const token = JSON.parse(sessionStorage.getItem("token"));
+		let token = null;
+		if (sessionStorage.length) {
+			token = JSON.parse(sessionStorage.getItem("token"));
+		} else {
+			token = JSON.parse(localStorage.getItem("token"));
+		}
 		updateDatabase(token.tokenUser, firstname, lastname, myDispatch);
 		setsucces("Votre modification à été pris en compte");
 	};

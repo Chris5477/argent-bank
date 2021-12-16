@@ -8,6 +8,7 @@ const Header = () => {
 
 	const disconnect = () => {
 		sessionStorage.clear();
+		localStorage.clear();
 		history.push("/");
 	};
 
@@ -19,7 +20,7 @@ const Header = () => {
 			<h1 className="sr-only">Argent Bank</h1>
 
 			<div>
-				{JSON.parse(sessionStorage.getItem("token")) ? (
+				{JSON.parse(sessionStorage.getItem("token") || localStorage.getItem("token")) ? (
 					<OnlineNav closeModal={() => disconnect()} />
 				) : (
 					<Link to="/signup">

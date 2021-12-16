@@ -1,42 +1,46 @@
-import { DISCONNECT, ERROR_GET_DATA_USER, GET_DATA_USER, LOADING,  } from "./actionUser";
+import { DISCONNECT, ERROR_GET_DATA_USER, GET_DATA_USER, LOADING } from "./actionUser";
 
 const userState = {
-    isLoad : false,
-    dataUser : [],
-    error : "",
-}
+	isLoad: false,
+	dataUser: [],
+	error: "",
+	rememberMe: false,
+};
 
 export const userReducer = (state = userState, action) => {
-    switch(action.type){
-        case LOADING : 
-        return{
-            ...state,
-            isLoad : true
-        }
+	switch (action.type) {
+		case LOADING:
+			return {
+				...state,
+				isLoad: true,
+			};
 
-        case GET_DATA_USER :
-            return {
-                ...state,
-                isLoad : false,
-                dataUser : action.payload,
-                error : ""
-            }
-        case ERROR_GET_DATA_USER :
-            return {
-                ...state,
-                isLoad : false,
-                dataUser : [],
-                error : action.payload
-            }
+		case GET_DATA_USER:
+			return {
+				...state,
+				isLoad: false,
+				dataUser: action.payload,
+				error: "",
+				rememberMe: true,
+			};
+		case ERROR_GET_DATA_USER:
+			return {
+				...state,
+				isLoad: false,
+				dataUser: [],
+				error: action.payload,
+				rememberMe: false,
+			};
 
-        
-        case DISCONNECT :
-            return {
-                ...state,
-                isLoad : false,
-                dataUser : [],
-                error : ""
-            }
-        default : return state
-    }
-}
+		case DISCONNECT:
+			return {
+				...state,
+				isLoad: false,
+				dataUser: [],
+				error: "",
+				rememberMe: false,
+			};
+		default:
+			return state;
+	}
+};

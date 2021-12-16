@@ -8,23 +8,23 @@ host: localhost:3001
 basePath: /api/v1
 schemes:
   - http
-  /user/profile/transaction:
-    post:
+  /user/profile/transactions:
+    get:
       security:
         - Bearer: []
       tags:
         - User Module
       summary: See all the transactions of the month
-      description: API for fetching a user transaction
+      description: API for fetching a current user transaction
       parameters:
         - in: header
           name: Authorization
           description: Attach Bearer JWT token
           required: true
-        - in: body
-          name : body
-          description: period transaction
-          required: true
+      meta: 
+        ?sort: sort result of search
+        max-result: set a max number of result
+        page="": set page for research
       produces:
         - application/json
       responses:
@@ -102,10 +102,6 @@ schemes:
         - in: header
           name: Authorization
           description: Attach Bearer JWT token
-          required: true
-        - in: body
-          name : body
-          description: delete user transaction attributes
           required: true
       produces:
         - application/json

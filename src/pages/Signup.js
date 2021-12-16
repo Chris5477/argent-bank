@@ -10,6 +10,7 @@ import Button from "../components/Button";
 const Signup = () => {
 	const emailRef = useRef("");
 	const passwordRef = useRef("");
+	const checkRef = useRef("");
 	const myDispatch = useDispatch();
 	const history = useHistory();
 
@@ -19,8 +20,10 @@ const Signup = () => {
 			apiCall({
 				email: emailRef.current.value,
 				password: passwordRef.current.value,
+				rememberMe: document.querySelector("input[type=checkbox]").checked,
 			})
 		);
+
 		history.push("/profil");
 	};
 
@@ -49,6 +52,7 @@ const Signup = () => {
 							label={"Password"}
 						/>
 						<Input
+							ref={checkRef}
 							classWrapper={"input-remember"}
 							id={"remember-me"}
 							type={"checkbox"}
