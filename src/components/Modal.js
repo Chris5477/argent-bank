@@ -11,23 +11,28 @@ const Modal = () => {
 	const [firstname, setFirstname] = useState("");
 	const [lastname, setLastname] = useState("");
 	const [succes, setsucces] = useState("");
+	const [error, setError] = useState("");
 	const myDispatch = useDispatch();
 
 	const updateProfil = (e) => {
 		e.preventDefault();
-		let token = null;
-		if (sessionStorage.length) {
-			token = JSON.parse(sessionStorage.getItem("token"));
+		if (firstname && lastname) {
+			let token = null;
+			if (sessionStorage.length) {
+				token = JSON.parse(sessionStorage.getItem("token"));
+			} else {
+				token = JSON.parse(localStorage.getItem("token"));
+			}
+			updateDatabase(token.tokenUser, firstname, lastname, myDispatch);
+			setError("");
+			setsucces("Votre modification à été pris en compte");
 		} else {
-			token = JSON.parse(localStorage.getItem("token"));
+			setError("Veuillez remplir tous les champs");
 		}
-		updateDatabase(token.tokenUser, firstname, lastname, myDispatch);
-		setsucces("Votre modification à été pris en compte");
 	};
 
 	const closeModal = () => {
 		document.querySelector(".modal").classList.add("noDisplay");
-		window.location.reload();
 	};
 
 	return ReactDOM.createPortal(
@@ -51,7 +56,8 @@ const Modal = () => {
 						type={"text"}
 						label={"Votre nouveau prénom"}
 					/>
-					<p>{succes}</p>
+					<span id="error-text">{error}</span>
+					<span id="succes">{succes}</span>
 					<Button nameClass={"sign-in-change"} text={"Envoyer"} />
 				</form>
 				<Button nameClass={"close-modal"} text={"X"} method={() => closeModal()} />

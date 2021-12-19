@@ -16,6 +16,8 @@ export const loginRequest = (dispatcher, objUser) => {
 					sessionStorage.setItem("token", JSON.stringify({ tokenUser: token }));
 					verifyToken(dispatcher, token);
 				}
+			} else {
+				return "E-mail ou mot de passe invalide !";
 			}
 		})
 		.catch((err) => new Error(err));
