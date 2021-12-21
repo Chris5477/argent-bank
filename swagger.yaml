@@ -15,16 +15,16 @@ schemes:
       tags:
         - User Module
       summary: See all the transactions of the month
-      description: API for fetching a current user transaction
+      description: API to retrieve a user's transactions on a monthly basis
       parameters:
         - in: header
           name: Authorization
           description: Attach Bearer JWT token
           required: true
       meta: 
-        ?sort: sort result of search
-        max-result: set a max number of result
-        page="": set page for research
+        ?sort=(amount): sort result of search about amount
+        ?max-result=(20): set a max number of result (20 results)
+        ?page=(2): Set a paging system (focus research on page 2)
       produces:
         - application/json
       responses:
@@ -32,8 +32,34 @@ schemes:
           description: User transactions retrieved successully
           schema:
             $ref: '#/definitions/ApiResponse'
-        '400':
-          description: Invalid period
+        '401':
+          description: Unauthenticated user
+        '500':
+          description: Internal Server Error
+            /user/profile/transaction/:id:
+         get:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: See current transaction
+      description: API to retrieve the current user transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          name: _id
+          description : Attach id of current product
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction retrieved successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '401':
+          description: Unauthenticated user
         '500':
           description: Internal Server Error
         /user/profile/transaction/:id:
@@ -50,14 +76,14 @@ schemes:
           description: Attach Bearer JWT token
           required: true
         - in: body
-          name : body
-          description: Add information(s) on existing transaction
+          name : _id
+          description: Attach id current transaction
           required: true
       produces:
         - application/json
       responses:
-        '200':
-          description: New transactions post successully
+        '201':
+          description: New information of transactions post successully
           schema:
             $ref: '#/definitions/ApiResponse'
         '400':
@@ -70,15 +96,15 @@ schemes:
       tags:
         - User Module
       summary: User transaction
-      description: Change an information on existing transaction
+      description: Change informations on existing transaction
       parameters:
         - in: header
           name: Authorization
           description: Attach Bearer JWT token
           required: true
         - in: body
-          name : body
-          description: Update user transaction attributes
+          name : _id
+          description: Attach id current transaction
           required: true
       produces:
         - application/json
@@ -103,6 +129,8 @@ schemes:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          name: _id
+          description : Attach id of current product
       produces:
         - application/json
       responses:
