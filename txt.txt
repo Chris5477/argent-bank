@@ -1,2 +1,0 @@
-responsive header CONNECTE
-responsive modal

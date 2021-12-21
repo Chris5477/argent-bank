@@ -3,7 +3,6 @@ import disconnect from "../img/disconnect.png";
 import Button from "./Button";
 
 const OnlineNav = ({ closeModal }) => {
-	console.log(window.innerWidth);
 	const device = window.innerWidth < 798 ? <img src={disconnect} alt="logged out" /> : "log out";
 
 	return (

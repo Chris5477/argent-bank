@@ -5,6 +5,7 @@ import { setValueEmail, setValuePassword } from "../redux/actionsFormLogin";
 import { useState, useRef } from "react";
 import Header from "../components/Header";
 import Button from "../components/Button";
+import Loader from "../components/Loader";
 
 const Signup = () => {
 	const emailRef = useRef("");
@@ -12,6 +13,7 @@ const Signup = () => {
 	const checkRef = useRef("");
 	const myDispatch = useDispatch();
 	const [errorMessage, seterrorMessage] = useState("");
+	const [loader, setLoader] = useState("");
 	const stateUser = useSelector((state) => state.user);
 
 	const arrayInput = [
@@ -42,7 +44,9 @@ const Signup = () => {
 
 	const sendData = (e) => {
 		e.preventDefault();
+		seterrorMessage("");
 		if (emailRef.current.value && passwordRef.current.value) {
+			setLoader(<Loader />);
 			myDispatch(
 				apiCall({
 					email: emailRef.current.value,
@@ -50,8 +54,12 @@ const Signup = () => {
 					rememberMe: document.querySelector("input[type=checkbox]").checked,
 				})
 			);
-
-			!stateUser.dataUser.length && seterrorMessage("E-mail ou mot de passe invalide !");
+			setTimeout(() => {
+				if (!stateUser.userData) {
+					setLoader("");
+					seterrorMessage("Email ou mot de passe incorrect ");
+				}
+			}, 1000);
 		} else {
 			seterrorMessage("Veuillez remplir tous les champs du formulaire");
 		}
@@ -76,7 +84,10 @@ const Signup = () => {
 								key={`index ${index}`}
 							/>
 						))}
-						<span id="error-text">{errorMessage}</span>
+						<div className="state-request">
+							<span id="error-text">{errorMessage}</span>
+							{loader}
+						</div>
 						<Button nameClass="sign-in-button" text={"Sign In"} />
 					</form>
 				</section>
