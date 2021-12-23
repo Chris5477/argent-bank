@@ -42,7 +42,7 @@ const Modal = () => {
 					<img src={picture} alt="formular icon" />
 					<h1>Changer vos informations </h1>
 					<Input
-						getValue={(val) => setFirstname(val)}
+						getValue={(val) => setLastname(val)}
 						classWrapper={"input-wrapper"}
 						id={"firstName"}
 						type={"text"}
@@ -50,7 +50,7 @@ const Modal = () => {
 					/>
 
 					<Input
-						getValue={(val) => setLastname(val)}
+						getValue={(val) => setFirstname(val)}
 						classWrapper={"input-wrapper"}
 						id={"lastName"}
 						type={"text"}
