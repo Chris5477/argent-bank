@@ -3,6 +3,7 @@ import Button from "./Button";
 import Account from "./Account";
 import Modal from "./Modal";
 import { accounts_static } from "../data_static/accounts";
+import PropTypes from "prop-types";
 
 const { account1, account2, account3 } = accounts_static;
 
@@ -31,4 +32,9 @@ const UserPage = ({ userName }) => {
 		</main>
 	);
 };
+
+UserPage.propTypes = {
+	userName: PropTypes.string.isRequired,
+};
+
 export default UserPage;

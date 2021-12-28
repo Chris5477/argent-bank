@@ -1,4 +1,5 @@
 import Button from "./Button";
+import PropTypes from "prop-types";
 
 const Account = ({ props }) => {
 	const { title, amount, description } = props;
@@ -15,5 +16,8 @@ const Account = ({ props }) => {
 			</div>
 		</section>
 	);
+};
+Account.propTypes = {
+	props: PropTypes.object.isRequired,
 };
 export default Account;
