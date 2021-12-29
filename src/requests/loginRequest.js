@@ -6,6 +6,10 @@ export const loginRequest = (dispatcher, objUser) => {
 		.post("http://localhost:3001/api/v1/user/login", {
 			...objUser,
 		})
+
+		/* IF REQUEST IS A SUCCESS , SO WE GET TOKEN AND DEPENDING ON IF REMEMBER ME WAS CHECKED, 
+		THE TOKEN IS PLACED IN THE LOCALSTORAGE OR THE SESSIONSTPRAGE */
+
 		.then((response) => {
 			if (response.status === 200) {
 				const token = response.data.body.token;

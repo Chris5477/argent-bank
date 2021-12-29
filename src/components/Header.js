@@ -6,6 +6,7 @@ import OnlineNav from "./OnlineNav";
 const Header = () => {
 	const history = useHistory();
 
+	// permet de vider toutes les informations utilisateurs sur l'ordi utilisateur et le rediriger sur la home page
 	const disconnect = () => {
 		sessionStorage.clear();
 		localStorage.clear();
@@ -20,6 +21,7 @@ const Header = () => {
 			<h1 className="sr-only">Argent Bank</h1>
 
 			<div>
+				{/* IF USER IS LOGGED, SHOW A DIIFERENT NAVIGATION WITH DISCONNECT BUTTON */}
 				{JSON.parse(sessionStorage.getItem("token") || localStorage.getItem("token")) ? (
 					<OnlineNav closeModal={() => disconnect()} />
 				) : (

@@ -1,6 +1,8 @@
 import axios from "axios";
 import { verifyToken } from "./authRequest";
 
+// ALLOWS TO UPGRADE FIRSTNAME AND LASTNAME USER WHILE CHECKING IF ITS HIS TOKEN IS VALID
+
 export const updateDatabase = (jwt, nameA, nameB, dispatcher) => {
 	axios({
 		method: "put",

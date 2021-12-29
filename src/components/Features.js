@@ -5,6 +5,8 @@ import money from "../img/icon-money.png";
 import security from "../img/icon-security.png";
 
 const { feature1, feature2, feature3 } = features_static;
+
+// ALLOWS TO MAP PLACEHOLDER AND TO HAVE A MORE VISIBLE COMPONENT
 const arrayFeature = [
 	{ picture: chat, props: feature1 },
 	{ picture: money, props: feature2 },

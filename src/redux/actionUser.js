@@ -5,41 +5,43 @@ export const ERROR_GET_DATA_USER = "ERROR_GET_DATA_USER";
 export const DISCONNECT = "DISCONNECT";
 
 const loading = () => {
-  return {
-    type: LOADING,
-  };
+	return {
+		type: LOADING,
+	};
 };
 
 export const getDataUserSucces = (success) => {
-  return {
-    type: GET_DATA_USER,
-    payload: success,
-  };
+	return {
+		type: GET_DATA_USER,
+		payload: success,
+	};
 };
 
 export const errorGetDataUser = (error) => {
-  return {
-    type: ERROR_GET_DATA_USER,
-    payload: error,
-  };
+	return {
+		type: ERROR_GET_DATA_USER,
+		payload: error,
+	};
 };
 
 const disconnect = () => {
-  return {
-    type: DISCONNECT,
-  };
+	return {
+		type: DISCONNECT,
+	};
 };
 
+/* ALLOWS CALL TO API, AND ACCORDING TO STATE OF THE REQUEST , DISPATCH ACTIONS ON STORE */
+
 export const apiCall = (objUser) => {
-  return (dispatch) => {
-    dispatch(loading());
-    loginRequest(dispatch, objUser);
-    return new Error("Impossible de récupérer les information de votre compte");
-  };
+	return (dispatch) => {
+		dispatch(loading());
+		loginRequest(dispatch, objUser);
+		return new Error("Impossible de récupérer les information de votre compte");
+	};
 };
 
 export const logout = () => {
-  return (dispatch) => {
-    dispatch(disconnect());
-  };
+	return (dispatch) => {
+		dispatch(disconnect());
+	};
 };

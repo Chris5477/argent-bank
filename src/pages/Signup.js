@@ -16,6 +16,8 @@ const Signup = () => {
 	const [loader, setLoader] = useState("");
 	const stateUser = useSelector((state) => state.user);
 
+	//SET AN ARRAY TO MAP INPUTS IN COMPONENT
+
 	const arrayInput = [
 		{
 			ref: emailRef,
@@ -41,6 +43,11 @@ const Signup = () => {
 			label: "Remember-me",
 		},
 	];
+
+	/** SENDDATA
+	 * ALLOWS THE USER TO INDICATE THE STATUS OF HIS REQUEST
+	 * @param {object} e
+	 */
 
 	const sendData = (e) => {
 		e.preventDefault();
