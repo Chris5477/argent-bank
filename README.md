@@ -1,6 +1,63 @@
-# Getting Started with Create React App
+# Argent-bank
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Argent-bank is a new bank which allows users to consult all their activities on their bank account.
+
+# Technologies
+
+- CSS
+- JS
+- REACT
+- REDUX
+- MONGODB
+
+# AUTHOR
+
+. CHRIS5477
+
+# SUMMARY
+
+- iNSTALL MONGODB
+- INSTALL AND USE API
+- INSTALL AND USE APPLICATION **_argent-bank_**
+- EXAMPLE API AND RESPONSE
+
+## Install **_MongoDB_**
+
+To install **MongoDB** on your computer, I invite you to refer to the documentation on MongoDB. Below, you will find the links of the documentation according to your operating system
+
+### MongoDB on **windows**
+
+[MongoDB on Window](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
+
+### MongoDB on **macOs**
+
+[MongoDB on MacOs](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
+
+### MongoDB on **Linux**
+
+[MongoDB on Linux](https://docs.mongodb.com/manual/administration/install-on-linux/)
+
+## Install and use API
+
+### Install
+
+To install the API, you need to go to github on the following repository [API](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API).
+
+Then Fork this repository and clone it on your computer.
+
+### Use API
+
+Then , you need to go to the repository `cd (PATH-YOUR-REPO-API)` and run the following command `npm install` to install all the dependencies for good performance.
+
+To populate your database, you can run this command, you can run this command `npm run populate-db`.
+
+Finally use the command `npm run dev:server` to run the server.
+
+## INSTALL AND USE APPLICATION
+
+### Install application
+
+To install application , you need to run this command `yarn`
 
 ## Available Scripts
 
@@ -14,11 +71,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `yarn build`
 
 Builds the app for production to the `build` folder.\
@@ -29,42 +81,30 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## EXAMPLE API AND RESPONSE
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+For requests API , we use `axios`. below , you find severals examples of requests
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+axios.post(""http://localhost:3001/api/v1/user/login"",
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+{
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+      "email" : "example@email.com,
 
-## Learn More
+      "password" : "*************"
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+})
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+.then(response => console.log(response.data))`
 
-### Code Splitting
+Example response
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+{
 
-### Analyzing the Bundle Size
+    "status": 200,
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    "message": "User successfully logged in",
 
-### Making a Progressive Web App
+    "body": { "token": "TOKENEXAMPLE" }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+}
