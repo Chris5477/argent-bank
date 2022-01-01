@@ -79,6 +79,10 @@ schemes:
           name : _id
           description: Attach id current transaction
           required: true
+        -    - in: body
+          name: body
+          description: Transaction Payload
+          required: true
       produces:
         - application/json
       responses:
@@ -105,6 +109,10 @@ schemes:
         - in: body
           name : _id
           description: Attach id current transaction
+          required: true
+             - in: body
+          name: body
+          description: Set a new user-s name 
           required: true
       produces:
         - application/json

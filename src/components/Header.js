@@ -25,7 +25,7 @@ const Header = () => {
 				{JSON.parse(sessionStorage.getItem("token") || localStorage.getItem("token")) ? (
 					<OnlineNav closeModal={() => disconnect()} />
 				) : (
-					<Link to="/signup">
+					<Link to="/login">
 						<span className="fa fa-user-circle"></span>
 						Sign in
 					</Link>
