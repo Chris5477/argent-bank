@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
+import EditName from "./pages/EditName";
 import Error from "./pages/Error";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
@@ -18,6 +19,7 @@ const App = () => {
 							<Route path="/" exact component={HomePage} />
 							<Route path="/login" component={Signup} />
 							<Route path="/profil" component={Profile} />
+							<Route path="/edit" component={EditName} />
 							<Route component={Error} />
 						</Switch>
 						<Footer />

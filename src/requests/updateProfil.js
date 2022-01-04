@@ -4,6 +4,7 @@ import { verifyToken } from "./authRequest";
 // ALLOWS TO UPGRADE FIRSTNAME AND LASTNAME USER WHILE CHECKING IF ITS HIS TOKEN IS VALID
 
 export const updateDatabase = (jwt, nameA, nameB, dispatcher) => {
+	console.log(nameA, nameB);
 	axios({
 		method: "put",
 		url: "http://localhost:3001/api/v1/user/profile",

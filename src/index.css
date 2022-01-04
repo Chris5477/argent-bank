@@ -21,6 +21,133 @@ body {
 	background-color: #12002b;
 }
 
+.bg-dark-edit {
+	background-color: #dfe6ec;
+	height: 90vh;
+}
+
+.account-edit {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 2px solid #c3cfd9;
+	background-color: #fff;
+	width: 90%;
+	margin: 0 auto;
+	flex-direction: column;
+	padding: 1.7rem;
+	box-sizing: border-box;
+	text-align: left;
+	margin-bottom: 2rem;
+	border-radius: 4px;
+	position: relative;
+}
+
+.transaction-button-edit {
+	width: 15%;
+	padding: 12px;
+	font-size: 1.1rem;
+	font-weight: bold;
+	background-color: #6768f5;
+	color: #fff;
+	border-radius: 7px;
+	border: none;
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 3%;
+}
+
+.online-nav {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.online-nav a {
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.disconnect-area {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 15px;
+}
+
+.disconnect-area img {
+	width: 15%;
+	height: 25px;
+	color: #2c3e50;
+}
+.icon-profil {
+	width: 40%;
+	margin-right: 10px;
+}
+
+.disconnect-button {
+	background-color: transparent;
+	color: #2c3e50;
+	border: none;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.header-upgrade {
+	width: 100%;
+	height: 25vh;
+	font-size: 12px;
+	font-weight: 200;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.header-upgrade h1 {
+	margin-bottom: 20px;
+	font-size: 24px;
+	font-weight: 600;
+}
+.box-formData {
+	display: flex;
+}
+
+.formData-upgrade {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	padding-left: 20px;
+}
+
+.formData-upgrade .change-name {
+	width: 60%;
+	background-color: white;
+	color: #b3b3f0;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 10px;
+	border-radius: 7px;
+	border: 1px solid #b3b3f0;
+	justify-content: flex-end;
+	cursor: pointer;
+}
+
+.right {
+	transform: translateX(100px);
+}
+
+.formData-upgrade input {
+	border: 2px solid #c2cfd9;
+}
+
+input::placeholder {
+	color: #c2cfd9;
+}
+
 .sr-only {
 	border: 0 !important;
 	clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
@@ -35,45 +162,6 @@ body {
 	white-space: nowrap !important; /* 3 */
 }
 
-.modal {
-	width: 100%;
-	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.829);
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 1000;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.noDisplay {
-	display: none;
-}
-
-.content-modal {
-	width: 90%;
-	height: 70vh;
-	background-color: #12002b;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 8px;
-}
-
-.form-modal {
-	position: relative;
-	background-color: white;
-	width: 30%;
-	height: 70vh;
-	padding: 0 50px;
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	flex-direction: column;
-}
 .loader-page {
 	width: 40px;
 	height: 40px;
@@ -99,6 +187,12 @@ body {
 	font-style: italic;
 }
 
+.account-link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 @keyframes rotate {
 	from {
 		transform: rotateZ(0);
@@ -106,16 +200,6 @@ body {
 	to {
 		transform: rotateZ(980deg);
 	}
-}
-.close-modal {
-	position: absolute;
-	top: 18%;
-	right: 35%;
-	color: white;
-	background-color: #00bc77;
-	border-color: #00bc77;
-	font-size: 25px;
-	cursor: pointer;
 }
 
 .main-nav {
@@ -265,6 +349,7 @@ body {
 	font-weight: bold;
 	margin-top: 1rem;
 	border-color: #00bc77;
+	margin-top: 1rem;
 	background-color: #00bc77;
 	color: #fff;
 }
@@ -373,15 +458,6 @@ body {
 	padding: 10px;
 }
 
-.disconnect-button {
-	border-color: #00bc77;
-	background-color: #00bc77;
-	color: #fff;
-	font-weight: bold;
-	padding: 10px;
-	margin-left: 30px;
-}
-
 .header {
 	color: #fff;
 	margin-bottom: 2rem;
@@ -400,7 +476,8 @@ body {
 }
 
 @media (min-width: 720px) {
-	.account {
+	.account,
+	.account-edit {
 		flex-direction: row;
 	}
 
@@ -414,39 +491,24 @@ body {
 }
 
 @media screen and (max-width: 798px) {
-	.form-modal {
-		width: 40%;
-		font-size: 14px;
-	}
-
-	.form-modal h1 {
-		font-size: 20px;
-	}
-
-	.form-modal img {
-		width: 40px;
-		height: 40px;
-	}
-
-	.form-modal label {
-		font-size: 12px;
-	}
-
-	.form-modal input {
-		width: 100%;
-	}
-
-	.form-modal #error-text,
-	.form-modal #succes {
-		font-size: 14px;
-		font-style: italic;
-	}
-	.close-modal {
-		right: 25%;
-	}
-
 	.account-link {
 		font-size: 12px;
+	}
+
+	.account-edit {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border: 1px solid black;
+		background-color: #fff;
+		width: 90%;
+		height: 200px;
+		margin: 0 auto;
+		flex-direction: column;
+		padding: 1.5rem;
+		box-sizing: border-box;
+		text-align: left;
+		margin-bottom: 2rem;
 	}
 
 	.disconnect-button {
@@ -459,6 +521,17 @@ body {
 		margin-left: 10px;
 	}
 
+	.transaction-button-edit {
+		display: block;
+		width: 90%;
+		margin: auto;
+		background-color: #6768f5;
+		font-size: 1.1rem;
+		font-weight: bold;
+		color: #fff;
+		transform: translateY(20px);
+	}
+
 	.disconnect-button img {
 		width: 20px;
 		height: 20px;
@@ -466,6 +539,14 @@ body {
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+	}
+
+	.formData-upgrade input {
+		width: 80%;
+	}
+
+	.right {
+		transform: translateX(48px);
 	}
 
 	.fa-user-circle {
